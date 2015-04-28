@@ -1,0 +1,11 @@
+[template]
+src = "sp-general.tmpl"
+
+dest = "/etc/smokeping/config.d/General"
+
+keys = [ "/smokeping/config" ]
+
+owner = "root"
+mode = "0644"
+
+reload_cmd = "/usr/sbin/service smokeping reload"

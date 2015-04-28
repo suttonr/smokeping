@@ -8,6 +8,9 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
                 fonts-dejavu-core echoping curl lighttpd \
                 $(apt-get -s dist-upgrade|awk '/^Inst.*ecurity/ {print $2}') &&\
     apt-get clean && \
+    curl -L https://github.com/kelseyhightower/confd/releases/download/v0.5.0/confd-0.5.0-linux-amd64 -o /usr/local/bin/confd && \
+    chmod +x /usr/local/bin/confd && \
+    mkdir -p /etc/confd/{conf.d,templates} && \
     sed -i '/server.errorlog/s|^|#|' /etc/lighttpd/lighttpd.conf && \
     sed -i '/server.document-root/s|/html||' /etc/lighttpd/lighttpd.conf && \
     sed -i '/^#cgi\.assign/,$s/^#//; /"\.pl"/i \ \t".cgi"  => "/usr/bin/perl",'\
@@ -27,7 +30,10 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     ln -s /usr/share/smokeping/www /var/www/smokeping && \
     ln -s /usr/lib/cgi-bin /var/www/ && \
     ln -s /usr/lib/cgi-bin/smokeping.cgi /var/www/smokeping/
+
 COPY smokeping.sh /usr/bin/
+COPY sp-general.tmpl /etc/confd/templates/sp-general.tmpl
+COPY sp-general.toml /etc/confd/conf.d/
 
 VOLUME ["/etc/smokeping", "/etc/ssmtp", "/var/lib/smokeping"]
 
