@@ -1,0 +1,11 @@
+[template]
+src = "sp-targets.tmpl"
+
+dest = "/etc/smokeping/config.d/Targets"
+
+keys = [ "/smokeping/targets" ]
+
+owner = "root"
+mode = "0644"
+
+reload_cmd = "/usr/sbin/service smokeping reload"

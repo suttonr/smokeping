@@ -1,0 +1,11 @@
+[template]
+src = "sp-alerts.tmpl"
+
+dest = "/etc/smokeping/config.d/Alerts"
+
+keys = [ "/smokeping/config" ]
+
+owner = "root"
+mode = "0644"
+
+reload_cmd = "/usr/sbin/service smokeping reload"
