@@ -1,12 +1,8 @@
 *** General ***
-{{ if exists "/smokeping/config/owner" }}
-owner    = {{ getv "/smokeping/config/owner" }}
-{{ else }}
-owner    = Peter Random
-{{ end }}
+{{ if exists "/smokeping/config/owner" }}owner    = {{ getv "/smokeping/config/owner" }}{{ else }}owner    = Peter Random{{ end }}
+{{ if exists "/smokeping/config/email" }}contact  = {{ getv "/smokeping/config/email" }}{{ else }}contact  = some@address.nowhere{{ end }}
+{{ if exists "/smokeping/config/mailhost" }}mailhost = {{ getv "/smokeping/config/mailhost" }}{{ else }}mailhost = my.mail.host{{ end }}
 
-contact  = some@address.nowhere
-mailhost = my.mail.host
 # NOTE: do not put the Image Cache below cgi-bin
 # since all files under cgi-bin will be executed ... this is not
 # good for images.

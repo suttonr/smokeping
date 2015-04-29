@@ -1,0 +1,11 @@
+*** Alerts ***
+{{ if exists "/smokeping/config/alertto" }}to = {{ getv "/smokeping/config/alertto" }}{{ else }}to = alertee@address.somewhere{{ end }}
+{{ if exists "/smokeping/config/alertfrom" }}from = {{ getv "/smokeping/config/alertfrom" }}{{ else }}from = smokealert@company.xy{{ end }}
+
++someloss
+type = loss
+# in percent
+pattern = >0%,*12*,>0%,*12*,>0%
+comment = loss 3 times  in a row
+
+

@@ -1,5 +1,7 @@
+##  Forked from dperson/smokeping
+
 FROM debian:jessie
-MAINTAINER David Personette <dperson@dperson.com>
+MAINTAINER Ryan M Sutton <me@ryanmsutton.com>
 
 # Install lighttpd and smokeping
 RUN export DEBIAN_FRONTEND='noninteractive' && \
@@ -29,9 +31,9 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     ln -s /usr/lib/cgi-bin /var/www/ && \
     ln -s /usr/lib/cgi-bin/smokeping.cgi /var/www/smokeping/
 
-COPY smokeping.sh /usr/bin/
-COPY sp-general.tmpl /etc/confd/templates/sp-general.tmpl
-COPY sp-general.toml /etc/confd/conf.d/
+COPY launch.sh /usr/local/bin/
+COPY *.tmpl /etc/confd/templates/
+COPY *.toml /etc/confd/conf.d/
 COPY confd /usr/local/bin/confd
 
 VOLUME ["/etc/smokeping", "/etc/ssmtp", "/var/lib/smokeping"]
