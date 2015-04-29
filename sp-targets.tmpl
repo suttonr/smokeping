@@ -20,10 +20,10 @@ title = This host
 host = localhost
 #alerts = someloss
 
-{{ range getvs "/smokeping/targets/*" }}
-++ {{.name}}
-menu = {{.name}}
-title = {{.name}}
-host = {{.host}}
+{{ range gets "/smokeping/targets/*" }}
+++ {{.Key}}
+menu = {{.Key}}
+title = {{.Key}}
+host = {{.Value}}
 {{end}}
 

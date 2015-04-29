@@ -26,6 +26,8 @@ until confd -onetime -node $ETCD -config-file /etc/confd/conf.d/sp-targets.toml;
     sleep 5
 done
 
+cat /etc/smokeping/config.d/Targets
+
 # Put a continual polling `confd` process into the background to watch
 # for changes every 10 seconds
 confd -interval 10 -node $ETCD -config-file /etc/confd/conf.d/sp-general.toml &
